@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*b)jr#%efubm+#0@$2pz-n@d7q0fgscp1j+va#3o54moxb$vxs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com','localhost','127.0.0.1']
 
 
 # Application definition
@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 
     'account.apps.AccountConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend'
 ]
 
 ROOT_URLCONF = 'bookmarks.urls'
